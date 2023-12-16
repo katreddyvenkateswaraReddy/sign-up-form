@@ -63,6 +63,9 @@ const SignUp = () => {
       setEmail("");
       setPassword("");
       setConfirmPassword("");
+      setEmailValid(false);
+      setPasswordValid(false);
+      setConfirmPasswordValid(false);
       // Reset border colors
       setEmailBorderColor("");
       setPasswordBorderColor("");
