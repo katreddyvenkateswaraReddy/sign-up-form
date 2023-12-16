@@ -6,9 +6,9 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [emailValid, setEmailValid] = useState(true);
-  const [passwordValid, setPasswordValid] = useState(true);
-  const [confirmPasswordValid, setConfirmPasswordValid] = useState(true);
+  const [emailValid, setEmailValid] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
+  const [confirmPasswordValid, setConfirmPasswordValid] = useState(false);
 
   const [emailBorderColor, setEmailBorderColor] = useState("");
   const [passwordBorderColor, setPasswordBorderColor] = useState("");
@@ -42,18 +42,18 @@ const SignUp = () => {
     setState(isValid ? "valid" : "invalid");
   };
 
-  const handleInputChange = (setState) => () => {
-    // Set the border color to blue when typing
-    setState("blue");
-  };
+//   const handleInputChange = (setState) => () => {
+//     // Set the border color to blue when typing
+//     setState("blue");
+//   };
 
   const handleSubmit = () => {
     if (email.trim() === "" || password.trim() === "" || confirmPassword.trim() === "") {
       alert("Form cannot be submitted. Please fill in all fields.");
       // Set border color to red for empty fields
-      setEmailBorderColor(email.trim() === "" ? "invalid error" : "input");
-      setPasswordBorderColor(password.trim() === "" ? "invalid error" : "input");
-      setConfirmPasswordBorderColor(confirmPassword.trim() === "" ? "invalid error" : "input");
+      setEmailBorderColor(email.trim() === "" ? "invalid" : "input");
+      setPasswordBorderColor(password.trim() === "" ? "invalid" : "input");
+      setConfirmPasswordBorderColor(confirmPassword.trim() === "" ? "invalid" : "input");
       return;
     }
 
@@ -84,10 +84,10 @@ const SignUp = () => {
           onChange={handleEmailChange}
           onFocus={handleInputFocus(setEmailBorderColor)}
           onBlur={handleInputBlur(setEmailBorderColor, emailValid)}
-          onInput={handleInputChange(setEmailBorderColor)}
+        //   onInput={handleInputChange(setEmailBorderColor)}
           className={`input ${emailBorderColor}`}
         />
-        {!emailValid && <div className="error">Invalid email format</div>}
+        {(!emailValid || email.trim()==="") && <div className="error">Invalid email format</div>}
 
         <label htmlFor="password">Password:</label>
         <input
@@ -98,10 +98,10 @@ const SignUp = () => {
           onChange={handlePasswordChange}
           onFocus={handleInputFocus(setPasswordBorderColor)}
           onBlur={handleInputBlur(setPasswordBorderColor, passwordValid)}
-          onInput={handleInputChange(setPasswordBorderColor)}
+        //   onInput={handleInputChange(setPasswordBorderColor)}
           className={`input ${passwordBorderColor}`}
         />
-        {!passwordValid && (
+        {(!passwordValid || password.trim()==="") && (
           <div className="error">Password must be at least 8 characters</div>
         )}
 
@@ -117,10 +117,10 @@ const SignUp = () => {
             setConfirmPasswordBorderColor,
             confirmPasswordValid
           )}
-          onInput={handleInputChange(setConfirmPasswordBorderColor)}
+        //   onInput={handleInputChange(setConfirmPasswordBorderColor)}
           className={`input ${confirmPasswordBorderColor}`}
         />
-        {!confirmPasswordValid && (
+        {(!confirmPasswordValid || confirmPassword.trim()==="") && (
           <div className="error">Passwords do not match</div>
         )}
 

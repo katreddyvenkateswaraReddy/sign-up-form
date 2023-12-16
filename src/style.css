@@ -25,7 +25,7 @@ form {
   font-size: small;
   width: calc(100% - 16px);
   padding: 4px;
-  border: 2px solid #ddd;
+  border: 2px solid red;
   border-radius: 5px;
   outline: none;
   transition: border-color 0.3s ease;
@@ -49,14 +49,14 @@ input::placeholder {
 
 .error {
   color: red;
-  margin-top: 5px;
+  /* margin-top: 5px; */
   margin-bottom: 10px;
 }
 
-.invalid .error {
+/* .invalid .error {
   color: red;
   border-color: red;
-}
+} */
 
 
 button {
